@@ -6,7 +6,7 @@ spring:
   redis:
     host: 127.0.0.1 # 本地redis服务器地址
     port: 6379 #默认端口号 6379
-    #password:123456
+    password: foobared
     database: 0
     jedis:
       pool:
