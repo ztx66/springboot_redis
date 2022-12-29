@@ -3,6 +3,7 @@ package com.example.springboot_redis;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.core.*;
 
 import java.util.List;
@@ -102,7 +103,7 @@ class SpringbootRedisApplicationTest {
 
     }*/
 
-    @Test
+    /*@Test
     public void ZSet(){
 
         ZSetOperations zSetOperations = redisTemplate.opsForZSet();
@@ -124,7 +125,31 @@ class SpringbootRedisApplicationTest {
         }
 
 
+    }*/
+
+    /**
+     * 通用操作
+     */
+    @Test
+    public void A(){
+
+        //命令： KEYS pattern    ：通常 pattern为* 表示查看redis数据库中所有的key值
+        Set set= redisTemplate.keys("*");
+        for (Object key : set) {
+            System.out.println(key);
+        }
+
+        //命令： EXISTS key   : 检查指定的key是否在redis数据库中已经存在
+        Boolean name = redisTemplate.hasKey("name");
+        System.out.println(name);
+
+        //命令： TYPE key     ： 返回key所储存的value值的数据类型（比如说是string类型的value呢，还是哈希类型的value呢....反正就是那五种value类型）
+        DataType name1 = redisTemplate.type("name");
+        System.out.println(name1);
+
     }
+
+
 
 
 
